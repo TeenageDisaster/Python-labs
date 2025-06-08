@@ -1,0 +1,33 @@
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.speed = 0  # початкова швидкість 0
+
+    def accelerate(self):
+        self.speed += 5
+
+    def brake(self):
+        self.speed -= 5
+        # щоб швидкість не була нижчою за 0
+        if self.speed < 0:
+            self.speed = 0
+
+    def get_speed(self):
+        return self.speed
+
+# Створюємо об'єкт
+car = Car("Toyota", "Camry", 2020)
+
+# Прискорюємо 5 разів
+print("Прискорення:")
+for i in range(5):
+    car.accelerate()
+    print(f"Поточна швидкість після {i+1}-го прискорення: {car.get_speed()} км/год")
+
+# Гальмуємо 5 разів
+print("\nГальмування:")
+for i in range(5):
+    car.brake()
+    print(f"Поточна швидкість після {i+1}-го гальмування: {car.get_speed()} км/год")
