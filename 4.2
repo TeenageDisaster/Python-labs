@@ -1,0 +1,34 @@
+class Buffer:
+    def __init__(self):
+        self.data = []  # накопичувач елементів
+
+    def add(self, *a):
+        # додаємо нові елементи
+        self.data.extend(a)
+
+        # поки є принаймні 5 елементів — обчислюємо і виводимо суму першої п'ятірки
+        while len(self.data) >= 5:
+            five = self.data[:5]
+            print(f"Сума п'ятірки {five}: {sum(five)}")
+            # видаляємо ці 5 елементів
+            self.data = self.data[5:]
+
+    def get_current_part(self):
+        # повертаємо залишок елементів, які ще не увійшли в повну п'ятірку
+        return self.data
+
+# Приклад використання
+buf = Buffer()
+
+# Симулюємо надходження послідовності частинами:
+print("\nДодаємо перші 3 елементи:")
+buf.add(1, 2, 3)
+print("Поточні елементи:", buf.get_current_part())
+
+print("\nДодаємо наступні 6 елементів:")
+buf.add(4, 5, 6, 7, 8, 9)
+print("Поточні елементи:", buf.get_current_part())
+
+print("\nДодаємо ще 2 елементи:")
+buf.add(10, 11)
+print("Поточні елементи:", buf.get_current_part())
